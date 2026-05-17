@@ -1,0 +1,1306 @@
+/* =============================================================================
+   style.css — Ciarán Ryan Portfolio
+   https://ryandigitalmedia.com
+   =============================================================================
+
+   TABLE OF CONTENTS
+   -----------------
+   1.  EASY-EDIT VARIABLES  ← Start here for colours, fonts, spacing
+   2.  Reset & Base
+   3.  Navigation
+   4.  Hero Section
+   5.  Section Shared Styles
+   6.  What I Do — Pillars
+   7.  Selected Work — Gallery
+   8.  About
+   9.  Experience Timeline
+   10. Skills & Tools
+   11. Contact
+   12. Footer
+   13. Animations
+   14. Mobile / Responsive
+
+============================================================================= */
+
+
+/* =============================================================================
+   1. EASY-EDIT VARIABLES
+   —————————————————————
+   This is the main control panel for the site's look and feel.
+   Change values here and they apply everywhere automatically.
+============================================================================= */
+
+:root {
+
+  /* --- Colours: Dark (used in nav, hero, footer) --- */
+  --dark:           #18181A;  /* Main dark background — change for a different dark tone */
+  --dark-surface:   #242427;  /* Slightly lighter dark, used for cards on dark bg */
+  --dark-border:    #2E2E32;  /* Borders and dividers on dark backgrounds */
+
+  /* --- Colours: Accent (the blue) --- */
+  --accent:         #185FA5;  /* Primary blue — buttons, links, active states */
+  --accent-light:   #378ADD;  /* Lighter blue — hover states, tagline, hero sub-text */
+  --accent-pale:    #E6F1FB;  /* Very pale blue — tag backgrounds, icon backgrounds */
+
+  /* --- Colours: Light (used for most sections) --- */
+  --light-bg:       #FAF9F7;  /* Page background (warm off-white) */
+  --light-surface:  #FFFFFF;  /* Card and section surface (pure white) */
+  --light-alt:      #F2F0EB;  /* Alternate section background (slightly warmer) */
+  --border-light:   #E2DFD8;  /* Borders and dividers on light backgrounds */
+
+  /* --- Colours: Text --- */
+  --text-dark:      #1A1A1A;  /* Main body text on light backgrounds */
+  --text-muted:     #585853;  /* Secondary / supporting text */
+  --text-light:     #F0EEE8;  /* Main body text on dark backgrounds */
+
+  /* --- Typography --- */
+  --font-display:   'DM Serif Display', Georgia, serif;  /* Headings, name, tagline */
+  --font-body:      'DM Sans', system-ui, sans-serif;    /* All body text, UI elements */
+
+  /* --- Spacing: Sections --- */
+  --section-padding-v: 100px;  /* Top/bottom padding on each section */
+  --section-padding-h: 2.5rem; /* Left/right padding on each section */
+
+  /* --- Layout --- */
+  --max-width: 1100px;   /* Maximum content width */
+  --nav-height: 56px;    /* Height of the sticky navigation bar */
+  --border-radius: 8px;  /* Corner radius used on cards and containers */
+
+}
+
+
+/* =============================================================================
+   2. RESET & BASE
+   ———————————————
+   Zeroes out browser default margin/padding and sets global defaults.
+============================================================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* Smooth scrolling when clicking nav links */
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-dark);
+  background: var(--light-bg);
+  -webkit-font-smoothing: antialiased; /* Crisper text on Mac/iOS */
+}
+
+
+/* =============================================================================
+   3. NAVIGATION
+   —————————————
+   Fixed dark bar across the top. Logo left, links centre, CTA button right.
+   On mobile: links and CTA hide, hamburger button shows.
+============================================================================= */
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--dark);
+  border-bottom: 1px solid var(--dark-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--section-padding-h);
+  height: var(--nav-height);
+  transition: background 0.3s;
+}
+
+/* Logo — "CR." in the top left */
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--text-light);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  position: absolute;
+  left: 2.5rem;
+}
+
+
+/* The "." in the logo is blue */
+.nav-logo span {
+  color: var(--accent-light);
+}
+
+/* Navigation links list */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--text-light);
+}
+
+/* "Download CV" button in the nav */
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent);
+  color: #E6F1FB;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 16px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.nav-cta:hover {
+  background: var(--accent-light);
+  color: #fff;
+}
+
+/* Mobile hamburger button — hidden on desktop */
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--text-muted);
+  transition: all 0.3s;
+}
+
+
+/* =============================================================================
+   4. HERO SECTION
+   ———————————————
+   Full-height dark section with animated text, a subtle grid overlay,
+   and a radial blue glow in the top-right corner.
+============================================================================= */
+
+#hero {
+  background: var(--dark);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px var(--section-padding-h) 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle blue grid lines in the background */
+.hero-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(55,138,221,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(55,138,221,0.04) 1px, transparent 1px);
+  background-size: 60px 60px; /* Grid cell size — increase for larger grid */
+  pointer-events: none;
+}
+
+/* Soft radial glow in top-right */
+.hero-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(24,95,165,0.12) 0%, transparent 70%);
+  top: -100px;
+  right: -100px;
+  pointer-events: none;
+}
+
+/* Inner content wrapper — limits max width */
+.hero-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Small uppercase label above the name — e.g. "Based in Mainz, Germany" */
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.1s ease forwards; /* Staggers in after page load */
+}
+
+/* The short line before the eyebrow text */
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--accent-light);
+}
+
+/* Main name — large display font */
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 8vw, 96px); /* Scales with viewport, min 52px, max 96px */
+  line-height: 1.0;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.2s ease forwards;
+}
+
+/* Italic tagline below the name */
+.hero-tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(20px, 3vw, 28px);
+  color: var(--accent-light);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.3s ease forwards;
+}
+
+/* Short bio paragraph */
+.hero-bio {
+  max-width: 560px;
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.4s ease forwards;
+}
+
+/* Row of CTA buttons */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.5s ease forwards;
+}
+
+/* Primary filled button — "View work" */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #E6F1FB;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 24px;
+  border-radius: 4px;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-primary:hover {
+  background: var(--accent-light);
+  transform: translateY(-1px);
+}
+
+/* Secondary outlined button — "Get in touch" */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 12px 24px;
+  border-radius: 4px;
+  border: 1px solid var(--dark-border);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-muted);
+  color: var(--text-light);
+}
+
+/* Row of social icon links */
+.hero-socials {
+  display: flex;
+  gap: 12px;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.6s ease forwards;
+}
+
+/* Individual social icon square */
+.social-link {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--dark-border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.social-link:hover {
+  border-color: var(--accent-light);
+  background: rgba(55,138,221,0.1);
+}
+
+.social-link svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--text-muted);
+  transition: fill 0.2s;
+}
+
+.social-link:hover svg {
+  fill: var(--accent-light);
+}
+
+
+/* =============================================================================
+   5. SECTION SHARED STYLES
+   ————————————————————————
+   Applied across all sections for consistent spacing, max-width, and
+   the small uppercase section labels with a leading line.
+============================================================================= */
+
+section {
+  padding: var(--section-padding-v) var(--section-padding-h);
+}
+
+/* Centres content and caps the max width */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Small uppercase label above section headings — e.g. "What I do" */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+/* Short line before the section label */
+.section-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* Large section heading — e.g. "Three disciplines." */
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.1;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+/* Subtitle paragraph below section heading */
+.section-sub {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 520px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+
+/* =============================================================================
+   6. WHAT I DO — PILLARS
+   ———————————————————————
+   Three equal-width cards side by side. Each has an icon, title, description,
+   and tags. On hover: lifts up and a blue bar sweeps in from the left.
+============================================================================= */
+
+#what {
+  background: var(--light-surface);
+  border-top: 1px solid var(--border-light);
+}
+
+/* Three-column grid */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+/* Individual pillar card */
+.pillar {
+  border: 1px solid var(--border-light);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  transition: border-color 0.2s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Blue bar that sweeps in across the top of the card on hover */
+.pillar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.pillar:hover {
+  border-color: var(--accent-pale);
+  transform: translateY(-3px);
+}
+
+.pillar:hover::before {
+  transform: scaleX(1);
+}
+
+/* Small icon square at the top of each pillar */
+.pillar-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--accent-pale);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.pillar-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pillar h3 {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.pillar p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* Row of small blue tags at the bottom of each pillar */
+.pillar-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 1.25rem;
+}
+
+/* Individual tag pill */
+.tag {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 3px;
+  background: var(--accent-pale);
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+
+/* =============================================================================
+   7. SELECTED WORK — GALLERY
+   ————————————————————————————
+   Filterable 3-column grid of project cards. Filter buttons at the top.
+   Each card has a thumbnail area (replace placeholder with an <img>) and
+   a text info area below.
+   
+   TO ADD YOUR OWN IMAGES:
+   Replace the <div class="work-thumb-inner"> with:
+   <img src="images/your-image.jpg" alt="Project name" style="width:100%;height:100%;object-fit:cover;">
+============================================================================= */
+
+#work {
+  background: var(--light-bg);
+  border-top: 1px solid var(--border-light);
+}
+
+/* Header row — heading on left */
+.work-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Row of filter buttons — All / 3D / Film / Photo / Product */
+.filter-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+/* Individual filter button */
+.filter-btn {
+  background: none;
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  padding: 5px 16px;
+  font-size: 13px;
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Active or hovered filter button fills with accent colour */
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* 3-column grid of cards */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+/* Individual project card — this is an <a> tag so the whole card is clickable */
+.work-card {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  background: var(--light-surface);
+  transition: transform 0.25s, box-shadow 0.25s;
+  text-decoration: none;
+  display: block;
+}
+
+.work-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+}
+
+/* Thumbnail container — holds image or placeholder */
+.work-thumb {
+  aspect-ratio: 16/10; /* Change to 1/1 for square, 4/3 for traditional */
+  background: var(--light-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Placeholder div — remove this when you add real images */
+.work-thumb-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 48px;
+  color: var(--border-light);
+  transition: transform 0.4s;
+}
+
+/* Thumbnail zooms slightly on hover */
+.work-card:hover .work-thumb-inner {
+  transform: scale(1.04);
+}
+
+/* Category label badge in top-right of thumbnail */
+.work-thumb-label {
+  position: absolute;
+  top: 10px; right: 10px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: rgba(24,24,26,0.7);
+  color: var(--accent-light);
+  backdrop-filter: blur(4px);
+}
+
+/* Text area below the thumbnail */
+.work-info {
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.work-info h3 {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.work-info p {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+
+/* =============================================================================
+   8. ABOUT
+   ————————
+   Two-column layout: photo on the left, text on the right.
+   Photo has a small badge overlaid in the bottom-right corner.
+   
+   TO ADD YOUR PHOTO:
+   Replace <div class="about-img-placeholder"> with:
+   <img src="images/ciaran.jpg" alt="Ciarán Ryan" class="about-img">
+============================================================================= */
+
+#about {
+  background: var(--light-surface);
+  border-top: 1px solid var(--border-light);
+}
+
+/* Two-column grid: narrower photo column, wider text column */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 5rem;
+  align-items: start;
+  margin-top: 3rem;
+}
+
+/* Wrapper needed for the absolute-positioned badge */
+.about-img-wrap {
+  position: relative;
+}
+
+/* Actual photo — shown when you replace the placeholder */
+.about-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  display: block;
+}
+
+/* Placeholder shown when no photo is set */
+.about-img-placeholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: var(--light-alt);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: var(--border-light);
+  font-family: var(--font-display);
+}
+
+/* Small dark badge overlaid on the photo — "20+ years across three disciplines" */
+.about-img-badge {
+  position: absolute;
+  bottom: -16px;
+  right: -16px;
+  background: var(--dark);
+  color: var(--text-light);
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 160px;
+}
+
+/* Large number inside the badge */
+.about-img-badge strong {
+  display: block;
+  font-size: 22px;
+  font-family: var(--font-display);
+  color: var(--accent-light);
+  font-weight: 400;
+}
+
+/* Body text paragraphs */
+.about-text p {
+  font-size: 16px;
+  color: var(--text-dark);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+  font-weight: 300;
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+.about-text strong {
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+/* Pull-quote with a blue left border */
+.about-highlight {
+  border-left: 2px solid var(--accent);
+  padding-left: 1.25rem;
+  margin: 1.75rem 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+
+/* =============================================================================
+   9. EXPERIENCE TIMELINE
+   ————————————————————————
+   Three-column grid per row: date (right-aligned) | dot+line | content.
+   Current role has a full blue dot; past roles have lighter outlined dots.
+============================================================================= */
+
+#experience {
+  background: var(--light-bg);
+  border-top: 1px solid var(--border-light);
+}
+
+.timeline {
+  margin-top: 3rem;
+}
+
+/* Each row: date | connector | content */
+.tl-item {
+  display: grid;
+  grid-template-columns: 160px 1px 1fr; /* date width | line | content */
+  gap: 0 2rem;
+  padding-bottom: 3rem;
+  position: relative;
+}
+
+.tl-item:last-child {
+  padding-bottom: 0;
+}
+
+/* Date column — right-aligned */
+.tl-date {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+  padding-top: 2px;
+  text-align: right;
+  line-height: 1.5;
+}
+
+/* Column containing the dot and vertical connector line */
+.tl-line-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Dot — blue = current role */
+.tl-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  margin-top: 3px;
+}
+
+/* Outlined dot — past roles */
+.tl-dot.past {
+  background: var(--border-light);
+  border: 2px solid var(--accent-pale);
+}
+
+/* Vertical line connecting the dots */
+.tl-connector {
+  width: 1px;
+  flex: 1;
+  background: var(--border-light);
+  margin-top: 4px;
+}
+
+/* Hide connector on the last item */
+.tl-item:last-child .tl-connector {
+  display: none;
+}
+
+/* Content column — role title, company, bullet points */
+.tl-content {
+  padding-top: 0;
+}
+
+.tl-role {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-dark);
+  letter-spacing: -0.01em;
+  margin-bottom: 2px;
+}
+
+/* Company name in blue */
+.tl-company {
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+
+/* Bullet point list */
+.tl-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tl-bullets li {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.65;
+  padding-left: 14px;
+  position: relative;
+}
+
+/* Custom bullet — small blue dash */
+.tl-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 5px;
+  height: 1px;
+  background: var(--accent-light);
+}
+
+
+/* =============================================================================
+   10. SKILLS & TOOLS
+   ——————————————————
+   2x2 grid of grouped skill boxes. Each box has a category title and
+   a wrapped row of tag chips.
+============================================================================= */
+
+#skills {
+  background: var(--light-surface);
+  border-top: 1px solid var(--border-light);
+}
+
+/* 2-column grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 3rem;
+}
+
+/* Individual skill group box */
+.skill-group {
+  border: 1px solid var(--border-light);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+}
+
+/* Category title — "Product & Delivery" etc */
+.skill-group-title {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+/* Wrapping row of skill chips */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+/* Individual skill chip */
+.skill-tag {
+  font-size: 13px;
+  font-weight: 400;
+  padding: 5px 12px;
+  border-radius: 4px;
+  background: var(--light-bg);
+  color: var(--text-dark);
+  border: 1px solid var(--border-light);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+/* Hover turns chip blue */
+.skill-tag:hover {
+  background: var(--accent-pale);
+  border-color: var(--accent-pale);
+  color: var(--accent);
+}
+
+
+/* =============================================================================
+   11. CONTACT
+   ————————————
+   Two-column layout: intro text + details on left, form on right.
+   Form submits to whatever endpoint you configure (see index.html script).
+   
+   TO MAKE THE FORM WORK:
+   Sign up at formspree.io, create a form, and replace the <form> tag's
+   action attribute with your Formspree URL. Remove the onsubmit handler.
+============================================================================= */
+
+#contact {
+  background: var(--light-bg);
+  border-top: 1px solid var(--border-light);
+}
+
+/* Two-column grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem;
+  margin-top: 3rem;
+  align-items: start;
+}
+
+/* Intro text on the left */
+.contact-intro p {
+  font-size: 16px;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+
+/* Stack of email + location links */
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Individual contact detail row — icon + text */
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-detail:hover {
+  color: var(--accent);
+}
+
+.contact-detail svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 1.5;
+  flex-shrink: 0;
+}
+
+/* Row of social buttons (LinkedIn, ArtStation) */
+.contact-socials-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 1.75rem;
+}
+
+.contact-social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  padding: 8px 14px;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.contact-social-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-pale);
+}
+
+.contact-social-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* Contact form on the right */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Side-by-side Name + Email fields */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Label + input stacked vertically */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--text-dark);
+}
+
+.form-field input,
+.form-field textarea {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-dark);
+  background: var(--light-surface);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: none;
+}
+
+/* Blue border on focus */
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: var(--accent);
+}
+
+.form-field textarea {
+  min-height: 120px;
+}
+
+/* Submit button */
+.form-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #E6F1FB;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+  align-self: flex-start;
+}
+
+.form-submit:hover {
+  background: var(--accent-light);
+}
+
+
+/* =============================================================================
+   12. FOOTER
+   ——————————
+   Dark footer matching the nav. Logo left, copyright centre, links right.
+============================================================================= */
+
+footer {
+  background: var(--dark);
+  border-top: 1px solid var(--dark-border);
+  padding: 2rem var(--section-padding-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--text-light);
+  text-decoration: none;
+}
+
+.footer-logo span {
+  color: var(--accent-light);
+}
+
+.footer-copy {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--text-light);
+}
+
+
+/* =============================================================================
+   13. ANIMATIONS
+   ———————————————
+   fadeUp: used for the hero section staggered entrance on page load.
+   reveal / reveal.visible: used for scroll-triggered fade-ins on all
+   other sections (triggered by IntersectionObserver in index.html).
+============================================================================= */
+
+/* Hero entrance animation — elements start invisible and slide up */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Default state for scroll-reveal elements — invisible and shifted down */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* State added by JavaScript when element enters the viewport */
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =============================================================================
+   14. MOBILE / RESPONSIVE
+   ————————————————————————
+   Breakpoint at 768px (standard tablet/mobile boundary).
+   Stacks multi-column layouts to single column, hides nav links,
+   shows hamburger button.
+   
+   NOTE: The hamburger button is shown but not yet wired to open a menu.
+   To add a mobile menu, add a <nav> overlay in index.html and toggle it
+   with JavaScript when the hamburger is clicked.
+============================================================================= */
+
+@media (max-width: 768px) {
+
+  /* Nav: hide links and CTA, show hamburger */
+  nav { padding: 0 1.5rem; }
+  .nav-links, .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+
+  /* Reduce section padding on mobile */
+  section { padding: 72px 1.5rem; }
+  #hero { padding: 100px 1.5rem 60px; }
+
+  /* Stack pillars vertically */
+  .pillars-grid { grid-template-columns: 1fr; }
+
+  /* Work grid: 2 columns on mobile (still manageable) */
+  .work-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Stack about grid */
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-img-badge { right: 0; } /* Keep badge on-screen */
+
+  /* Simplify timeline — hide date column and connector line */
+  .tl-item { grid-template-columns: 1fr; }
+  .tl-date { text-align: left; }
+  .tl-line-wrap { display: none; }
+
+  /* Stack skills grid */
+  .skills-grid { grid-template-columns: 1fr; }
+
+  /* Stack contact grid */
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+  /* Stack form name/email row */
+  .form-row { grid-template-columns: 1fr; }
+
+  /* Stack footer */
+  footer { flex-direction: column; align-items: flex-start; }
+}
