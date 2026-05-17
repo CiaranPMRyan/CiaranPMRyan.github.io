@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============================================================
+    PAGE TITLE — shown in browser tab and search results
+    Format: "Name — Tagline"
+  ============================================================ -->
+  <title>Ciarán Ryan — Head of Product · Visual Storyteller</title>
+
+  <!-- ============================================================
+    GOOGLE FONTS
+    DM Serif Display — headings, name, tagline (the serif)
+    DM Sans         — body text, UI elements (the sans-serif)
+    To change fonts: replace these links and update --font-display
+    and --font-body in style.css Section 1.
+  ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+  <!-- ============================================================
+    STYLESHEET
+    All visual styling lives in style.css.
+    Edit colours, fonts, and spacing in Section 1 of that file.
+  ============================================================ -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<!-- ============================================================
+  NAVIGATION
+  Fixed dark bar. Stays at the top as you scroll.
+  - Logo: links back to #hero
+  - Nav links: anchor links to each section
+  - CTA button: currently triggers browser Print (for CV download)
+    Replace onclick with a link to a real PDF when ready:
+    href="files/ciaran-ryan-cv.pdf" download
+  - Hamburger: visible on mobile; not yet wired to a dropdown menu
+============================================================ -->
+<nav id="nav">
+
+  <!-- Logo — edit the letters if you want different initials -->
+  <a href="#hero" class="nav-logo">CR<span>.</span></a>
+
+  <!-- Main nav links — add or remove <li> items as needed -->
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <!-- CTA button — swap onclick for href="cv.pdf" download when ready -->
+  <!-- <a href="#" class="nav-cta" onclick="window.print(); return false;">
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 7V2h10v5"/><rect x="1" y="7" width="14" height="7" rx="1"/><path d="M5 14v-4h6v4"/>
+    </svg>
+    Download CV
+  </a> -->
+
+  <!-- Mobile hamburger — three bars, shows on screens under 768px -->
+  <button class="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+
+</nav>
+
+
+<!-- ============================================================
+  HERO SECTION
+  Full-height dark section. First thing visitors see.
+
+  TO EDIT:
+  - Eyebrow:  The small uppercase text, e.g. location or status
+  - Name:     Your name (keep the special ́ character)
+  - Tagline:  The italic line below the name
+  - Bio:      2-3 sentences max — keep it punchy
+  - Buttons:  "View work" scrolls to #work; "Get in touch" to #contact
+  - Socials:  Replace href values with your actual profile URLs
+============================================================ -->
+<section id="hero">
+
+  <!-- Background decorations — grid lines and blue glow, do not remove -->
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-inner">
+
+    <!-- Small uppercase label above name — location or open-to-work status -->
+    <div class="hero-eyebrow">Based in Mainz, Germany</div>
+
+    <!-- Your name — large display heading -->
+    <h1 class="hero-name">Ciarán Ryan</h1>
+
+    <!-- Tagline — italic, sits below the name -->
+    <p class="hero-tagline">Head of Product · Visual Storyteller</p>
+
+    <!-- Short bio — 2-3 sentences -->
+    <p class="hero-bio">
+      Product manager and creative with 20+ years delivering across broadcast television, 3D production, licensed product development, and digital platforms. I bring structured thinking to creative problems — and creative thinking to structured ones.
+    </p>
+
+    <!-- CTA buttons -->
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">
+        View work
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+      <a href="#contact" class="btn-secondary">Get in touch</a>
+    </div>
+
+    <!-- Social icon links — replace href values with your actual URLs -->
+    <!-- <div class="hero-socials"> -->
+
+      <!-- LinkedIn -->
+      <!-- <a href="https://www.linkedin.com/in/YOUR-USERNAME" class="social-link" target="_blank" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a> -->
+
+      <!-- ArtStation -->
+      <!-- <a href="https://www.artstation.com/YOUR-USERNAME" class="social-link" target="_blank" aria-label="ArtStation">
+        <svg viewBox="0 0 24 24"><path d="M4.077 19.028l-1.98-3.432L16.415 2.623l1.98 3.432zM0 17.723l2.027 3.505A2.424 2.424 0 004.19 22.56h13.457l-2.792-4.838H0zM24 17.748c0-.484-.143-.94-.388-1.331L15.728 2.456A2.424 2.424 0 0013.564 1.12H9.419l12.217 21.544c.564-.467.364-1.476.364-4.916z"/></svg>
+      </a> -->
+
+      <!-- Vimeo -->
+      <!-- <a href="https://vimeo.com/YOUR-USERNAME" class="social-link" target="_blank" aria-label="Vimeo">
+        <svg viewBox="0 0 24 24"><path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 12.4C4.603 9.813 3.834 8.516 3.01 8.516c-.179 0-.806.378-1.881 1.132L0 8.516C1.259 5.504 2.123 2.897 4.48 0l1.677 1.516C2.462 3.486 1.806 5.25 1.806 5.25c.373 1.084.808 1.626 1.304 1.626.744 0 1.861-1.169 3.348-3.507C7.952 1.131 9.05.35 9.983.35c1.586 0 2.529 1.298 2.831 3.895.123 1.005.208 1.706.255 2.101.482 2.291 1.023 3.436 1.623 3.436.456 0 1.142-.716 2.059-2.148C17.668 6.24 18.18 5.12 18.18 4.296c0-.94-.26-1.41-.779-1.41-.278 0-.562.066-.853.196.567-1.86 1.643-2.76 3.228-2.71 1.174.04 1.727.793 1.724 2.044z"/></svg>
+      </a>
+
+    </div> -->
+  </div>
+</section>
+
+
+<!-- ============================================================
+  WHAT I DO — THREE PILLARS
+  Edit the title, description, and tags inside each .pillar div.
+  The icon is an inline SVG — you can swap for any icon set.
+============================================================ -->
+<section id="what">
+  <div class="container">
+
+    <div class="reveal">
+      <div class="section-label">What I do</div>
+      <h2 class="section-heading">Three disciplines.<br>One joined-up approach.</h2>
+      <p class="section-sub">Whether I'm managing a product roadmap, building a 3D asset pipeline, or directing a documentary shoot — the underlying discipline is the same: clear thinking, structured delivery, and an eye for detail.</p>
+    </div>
+
+    <div class="pillars-grid">
+
+      <!-- Pillar 1: Product Management -->
+      <div class="pillar reveal">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+        </div>
+        <h3>Product Management</h3>
+        <p>Roadmap ownership, cross-functional alignment, stakeholder management, and delivery accountability — from concept through to market. Proven track record cutting time-to-market and growing platform revenue across licensed IP brands.</p>
+        <div class="pillar-tags">
+          <span class="tag">Roadmapping</span>
+          <span class="tag">Stakeholder mgmt</span>
+          <span class="tag">E-commerce</span>
+          <span class="tag">Python</span>
+        </div>
+      </div>
+
+      <!-- Pillar 2: 3D & Technical Production -->
+      <div class="pillar reveal">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>3D & Technical Production</h3>
+        <p>Advanced generalist across Blender, ZBrush, and Substance Painter — with a photogrammetry pipeline, procedural workflows, and multi-pass EXR rendering for broadcast and interactive platforms.</p>
+        <div class="pillar-tags">
+          <span class="tag">Blender</span>
+          <span class="tag">Photogrammetry</span>
+          <span class="tag">Substance Painter</span>
+          <span class="tag">ZBrush</span>
+          <span class="tag">Proceduralism</span>
+        </div>
+      </div>
+
+      <!-- Pillar 3: Film, TV & Photography -->
+      <div class="pillar reveal">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M3 9a9 9 0 000 6M21 9a9 9 0 010 6M3 9c3-4.5 15-4.5 18 0M3 15c3 4.5 15 4.5 18 0"/></svg>
+        </div>
+        <h3>Film, TV & Photography</h3>
+        <p>20+ broadcast documentary credits across ZDF, SWR, and Arte — from TerraX to ZDF History. Technical lead across the full production lifecycle, from brief and scoping through to delivery and sign-off.</p>
+        <div class="pillar-tags">
+          <span class="tag">ZDF / SWR / Arte</span>
+          <span class="tag">Documentary</span>
+          <span class="tag">Motion GFX</span>
+          <span class="tag">Photography</span>
+          <span class="tag">Post-production</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+  SELECTED WORK — FILTERABLE GALLERY
+  Filter buttons use data-filter; cards use data-cat.
+  They must match for filtering to work.
+
+  TO ADD A PROJECT:
+  1. Copy one .work-card block
+  2. Set data-cat="3d" (or film / photo / product)
+  3. Replace the .work-thumb-inner div with a real image:
+       <img src="images/project.jpg" alt="Description"
+            style="width:100%;height:100%;object-fit:cover;">
+  4. Update href to point to ArtStation post, Vimeo, or a case study
+  5. Edit the title and subtitle in .work-info
+============================================================ -->
+<section id="work">
+  <div class="container">
+
+    <div class="work-header reveal">
+      <div>
+        <div class="section-label">Selected work</div>
+        <h2 class="section-heading">Recent projects</h2>
+      </div>
+    </div>
+
+    <!-- Filter buttons — data-filter value must match data-cat on cards -->
+    <div class="filter-row reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="3d">3D</button>
+      <button class="filter-btn" data-filter="film">Film</button>
+      <button class="filter-btn" data-filter="photo">Photography</button>
+      <button class="filter-btn" data-filter="product">Product</button>
+    </div>
+
+    <div class="work-grid">
+
+      <!-- Card 1 — 3D: Rope Bridge -->
+      <a href="#" class="work-card reveal" data-cat="3d">
+        <div class="work-thumb">
+          <!-- Replace this div with <img src="..."> when you have real images -->
+          <div class="work-thumb-inner" style="background:#1C2A3A; color:#264a70; font-size:64px;">⬡</div>
+          <div class="work-thumb-label">3D</div>
+        </div>
+        <div class="work-info">
+          <h3>Procedural Rope Bridge</h3>
+          <p>Blender Geometry Nodes · Bezier curve driven</p>
+        </div>
+      </a>
+
+      <!-- Card 2 — Product: Games Workshop -->
+      <a href="#" class="work-card reveal" data-cat="product">
+        <div class="work-thumb">
+          <div class="work-thumb-inner" style="background:#1a1a24; color:#2d2d40;">◈</div>
+          <div class="work-thumb-label">Product</div>
+        </div>
+        <div class="work-info">
+          <h3>Games Workshop Apparel Range</h3>
+          <p>Burgschneider GmbH · Licensed IP development</p>
+        </div>
+      </a>
+
+      <!-- Card 3 — Film: TerraX -->
+      <a href="#" class="work-card reveal" data-cat="film">
+        <div class="work-thumb">
+          <div class="work-thumb-inner" style="background:#1a2218; color:#2a3828;">▶</div>
+          <div class="work-thumb-label">Film</div>
+        </div>
+        <div class="work-info">
+          <h3>TerraX Expedition</h3>
+          <p>ZDF · 3D & Motion Graphics</p>
+        </div>
+      </a>
+
+      <!-- Card 4 — 3D: Hasbro -->
+      <a href="#" class="work-card reveal" data-cat="3d">
+        <div class="work-thumb">
+          <div class="work-thumb-inner" style="background:#231c1c; color:#3d2a2a;">◉</div>
+          <div class="work-thumb-label">3D</div>
+        </div>
+        <div class="work-info">
+          <h3>Hasbro Previz Hair Systems</h3>
+          <p>Blender Geometry Nodes · Character previz</p>
+        </div>
+      </a>
+
+      <!-- Card 5 — Photography -->
+      <a href="#" class="work-card reveal" data-cat="photo">
+        <div class="work-thumb">
+          <div class="work-thumb-inner" style="background:#1a1f24; color:#2a3040;">⬛</div>
+          <div class="work-thumb-label">Photography</div>
+        </div>
+        <div class="work-info">
+          <h3>Product Photography</h3>
+          <p>E-commerce · Licensed merchandise</p>
+        </div>
+      </a>
+
+      <!-- Card 6 — Product: Platform migration -->
+      <a href="#" class="work-card reveal" data-cat="product">
+        <div class="work-thumb">
+          <div class="work-thumb-inner" style="background:#1a1f1a; color:#283028;">⬡</div>
+          <div class="work-thumb-label">Product</div>
+        </div>
+        <div class="work-info">
+          <h3>Platform Migration & Revenue Growth</h3>
+          <p>Burgschneider · Non-NA revenue 10% → 40%</p>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Remove this note once you've replaced placeholders with real images -->
+    <!-- <p style="margin-top: 1.5rem; font-size: 13px; color: var(--text-muted); text-align: center;">
+      Replace thumbnail divs with your own images — or link to ArtStation / Vimeo for full case studies.
+    </p> -->
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+  ABOUT
+  Photo on the left, text on the right.
+
+  TO ADD YOUR PHOTO:
+  1. Create an /images/ folder in your repo
+  2. Upload your photo there
+  3. Delete the <div class="about-img-placeholder"> block
+  4. In its place add:
+       <img src="images/ciaran.jpg" alt="Ciarán Ryan" class="about-img">
+
+  Edit the paragraph text and blockquote below to update your bio.
+============================================================ -->
+<section id="about">
+  <div class="container">
+
+    <div class="reveal">
+      <div class="section-label">About</div>
+      <h2 class="section-heading">Who I am</h2>
+    </div>
+
+    <div class="about-grid">
+
+      <!-- Photo column — replace placeholder with your image (see above) -->
+      <div class="about-img-wrap reveal">
+        <div class="about-img-placeholder">CR</div>
+        <!-- Badge overlaid on the photo — edit the number and label -->
+        <div class="about-img-badge">
+          <strong>20+</strong>
+          years across three disciplines
+        </div>
+      </div>
+
+      <!-- Text column — edit paragraphs freely -->
+      <div class="about-text reveal">
+
+        <p>
+          I'm a product manager and creative based in Mainz, Germany. I started as a QA tester in Belfast, ditched it to tour with my band, then landed in Germany doing photo touch-ups for a startup. That was 20+ years ago.
+        </p>
+
+        <p>
+          Since then: <strong>VFX and broadcast production</strong>, <strong>3D artist</strong> for ZDF, SWR, and Arte across 20+ documentaries, and eventually <strong>Head of Product</strong> at Burgschneider GmbH. There I've the honour of working with Games Workshop, Hasbro/D&D, Middle Earth Enterprises, and Tomb Raider.
+        </p>
+
+        <!-- Pull quote — blue left border, italic serif font -->
+        <blockquote class="about-highlight">
+          "An eye for detail isn't just a tagline — it's the through-line of everything I've built."
+        </blockquote>
+
+        <p>
+          So, who am I?
+        </p>
+
+        <p>
+          Someone with a childlike enthusiasm to know how it all works.<br>
+          Someone who loves to get his hands dirty and be part of the process.<br>
+          Someone who takes pride in seeing the final result of a job well done.
+        </p>
+
+        <p>
+          Outside of work, you'll find me deep in Blender Geometry Nodes, homebrewing something experimental, or getting lost in yet another Roman history book.
+        </p>
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+  EXPERIENCE TIMELINE
+  Each .tl-item = one role.
+
+  Structure per item:
+    .tl-date      → date range text
+    .tl-dot       → solid blue = current; add class "past" for previous roles
+    .tl-connector → vertical line (CSS hides it on the last item automatically)
+    .tl-role      → job title
+    .tl-company   → company + location
+    .tl-bullets   → list of achievements (2-3 per role is ideal)
+
+  TO ADD A ROLE: copy a full .tl-item block and edit the content
+  TO REMOVE A ROLE: delete the entire .tl-item block
+============================================================ -->
+<section id="experience">
+  <div class="container">
+
+    <div class="reveal">
+      <div class="section-label">Experience</div>
+      <h2 class="section-heading">Career timeline</h2>
+    </div>
+
+    <div class="timeline">
+
+      <!-- Role 1: Current — solid blue dot, no "past" class -->
+      <div class="tl-item reveal">
+        <div class="tl-date">Oct 2025 – Present</div>
+        <div class="tl-line-wrap">
+          <div class="tl-dot"></div>
+          <div class="tl-connector"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-role">Head of Product Development</div>
+          <div class="tl-company">Burgschneider GmbH · Frankfurt am Main</div>
+          <!-- <ul class="tl-bullets">
+            <li>Reduced time-to-market from 24 months to 10 months across three product waves for Games Workshop, D&D, and Tomb Raider licensed ranges.</li>
+            <li>Owned platform migration to a global print-on-demand strategy, growing non-North American revenue from under 10% to over 40% of total sales.</li>
+            <li>Built internal tooling using Python, Claude Code, and GitHub — including a browser-based task management app, file automation scripts, and a legacy data pipeline.</li>
+          </ul> -->
+        </div>
+      </div>
+
+      <!-- Role 2: Past — add class "past" to .tl-dot -->
+      <div class="tl-item reveal">
+        <div class="tl-date">Jan 2022 – Sept 2025</div>
+        <div class="tl-line-wrap">
+          <div class="tl-dot past"></div>
+          <div class="tl-connector"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-role">Visual Asset Production Lead — Photography & 3D</div>
+          <div class="tl-company">Burgschneider GmbH · Frankfurt am Main</div>
+          <!-- <ul class="tl-bullets">
+            <li>Directed end-to-end visual asset production across multiple licensed brands for e-commerce and digital platforms.</li>
+            <li>Produced interactive 3D experiences, marketing campaigns, and live event content across design, marketing, and brand teams.</li>
+          </ul> -->
+        </div>
+      </div>
+
+      <!-- Role 3: Past -->
+      <div class="tl-item reveal">
+        <div class="tl-date">Apr 2011 – Dec 2020</div>
+        <div class="tl-line-wrap">
+          <div class="tl-dot past"></div>
+          <div class="tl-connector"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-role">Freelance Television Production (Photography, Post-production, 3D & Motion GFX)</div>
+          <div class="tl-company">Miadox · Mainz, Germany</div>
+          <!-- <ul class="tl-bullets">
+            <li>Delivered broadcast-ready 3D and motion assets for 20+ documentary productions across ZDF, SWR, and Arte — including TerraX Expedition and ZDF History.</li>
+            <li>Operated as independent producer and technical lead across the full lifecycle, managing distributed teams under tight broadcast deadlines.</li>
+          </ul> -->
+        </div>
+      </div>
+
+      <!-- Role 4: Past — last item, connector is hidden by CSS automatically -->
+      <div class="tl-item reveal">
+        <div class="tl-date">Jan 2008 – Apr 2010</div>
+        <div class="tl-line-wrap">
+          <div class="tl-dot past"></div>
+          <div class="tl-connector"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-role">VFX Generalist</div>
+          <div class="tl-company">3DMaximal GmbH · Ingelheim, Germany</div>
+          <!-- <ul class="tl-bullets">
+            <li>Compositing and digital imagery for film, TV, and advertising in fast-turnaround production environments.</li>
+          </ul> -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+  SKILLS & TOOLS — 2x2 GRID
+  TO ADD A SKILL:   add <span class="skill-tag">Name</span>
+  TO REMOVE A SKILL: delete the relevant <span>
+  TO ADD A GROUP:   copy a .skill-group block, update the title
+============================================================ -->
+<section id="skills">
+  <div class="container">
+
+    <div class="reveal">
+      <div class="section-label">Skills & tools</div>
+      <h2 class="section-heading">What I work with</h2>
+    </div>
+
+    <div class="skills-grid">
+
+      <!-- Group 1 -->
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Product & Delivery</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Roadmap planning</span>
+          <span class="skill-tag">Cross-functional teams</span>
+          <span class="skill-tag">Stakeholder management</span>
+          <span class="skill-tag">Requirements definition</span>
+          <span class="skill-tag">Time-to-market</span>
+          <span class="skill-tag">Brand compliance</span>
+        </div>
+      </div>
+
+      <!-- Group 2 -->
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Digital & Platforms</div>
+        <div class="skill-tags">
+          <span class="skill-tag">E-commerce platforms</span>
+          <span class="skill-tag">Print-on-demand</span>
+          <span class="skill-tag">Digital asset management</span>
+          <span class="skill-tag">CMS workflows</span>
+          <span class="skill-tag">Data pipelines</span>
+        </div>
+      </div>
+
+      <!-- Group 3 -->
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Creative & Technical</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Blender</span>
+          <span class="skill-tag">Geometry Nodes</span>
+          <span class="skill-tag">ZBrush</span>
+          <span class="skill-tag">Substance Painter</span>
+          <span class="skill-tag">Photogrammetry</span>
+          <span class="skill-tag">Adobe CC</span>
+          <span class="skill-tag">Photography</span>
+        </div>
+      </div>
+
+      <!-- Group 4 -->
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Dev & Tooling</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">Claude Code</span>
+          <span class="skill-tag">Google Workspace</span>
+          <span class="skill-tag">MS Office</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+  CONTACT
+  Split layout: intro + details left, form right.
+
+  TO MAKE THE FORM ACTUALLY SEND EMAILS:
+  1. Sign up free at https://formspree.io
+  2. Create a new form — it gives you a URL like:
+       https://formspree.io/f/abcd1234
+  3. Add that as the action on the <form> tag below, plus method="POST"
+  4. Delete the onsubmit="handleSubmit(event)" attribute
+  5. Remove the handleSubmit() function at the bottom of this file
+
+  EDIT: the intro paragraph, your email, and social URLs
+============================================================ -->
+<section id="contact">
+  <div class="container">
+
+    <div class="reveal">
+      <div class="section-label">Contact</div>
+      <h2 class="section-heading">Let's talk</h2>
+    </div>
+
+    <div class="contact-grid">
+
+      <!-- Left: intro + email + location + social buttons -->
+      <div class="contact-intro reveal">
+
+        <!-- Edit this availability message as your situation changes -->
+        <p>Want to know more? Happy to have an informal conversation. Feel free to reach out.</p>
+
+        <div class="contact-details">
+          <!-- Update both the href and the visible email address text -->
+          <a href="mailto:ciaranpmryan@gmail.com" class="contact-detail">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            ciaranpmryan@gmail.com
+          </a>
+          <a href="#" class="contact-detail">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Mainz, Germany
+          </a>
+        </div>
+
+        <!-- Social buttons — replace href values -->
+        <div class="contact-socials-row">
+          <a href="https://www.linkedin.com/in/YOUR-USERNAME" target="_blank" class="contact-social-btn">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://www.artstation.com/YOUR-USERNAME" target="_blank" class="contact-social-btn">
+            <svg viewBox="0 0 24 24"><path d="M4.077 19.028l-1.98-3.432L16.415 2.623l1.98 3.432zM0 17.723l2.027 3.505A2.424 2.424 0 004.19 22.56h13.457l-2.792-4.838H0zM24 17.748c0-.484-.143-.94-.388-1.331L15.728 2.456A2.424 2.424 0 0013.564 1.12H9.419l12.217 21.544c.564-.467.364-1.476.364-4.916z"/></svg>
+            ArtStation
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Right: contact form
+           Add action="https://formspree.io/f/YOUR-ID" method="POST" to go live -->
+      <div class="reveal">
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="What's this about?">
+          </div>
+          <div class="form-field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me about the opportunity or project..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            Send message
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2L2 8l5 2 2 5 5-13z"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+  FOOTER
+  Update the copyright year as needed.
+============================================================ -->
+<footer>
+  <a href="#hero" class="footer-logo">Ciarán Ryan<span>.</span></a>
+  <span class="footer-copy">© 2026 · ryandigitalmedia.com</span>
+  <ul class="footer-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</footer>
+
+
+<!-- ============================================================
+  JAVASCRIPT — three behaviours, no external libraries needed
+
+  1. SCROLL REVEAL
+     Watches .reveal elements entering the viewport and adds
+     class="visible" to trigger the CSS fade-up animation.
+     Staggers by 80ms per element in each batch.
+
+  2. WORK FILTER
+     Reads data-filter from the clicked button. Shows cards where
+     data-cat matches; hides the rest. "all" shows everything.
+
+  3. NAV SCROLL TINT
+     Adds a subtle blue tint to the nav border after 20px of scroll.
+
+  4. CONTACT FORM (demo only)
+     Simulates success state. Delete handleSubmit() once Formspree
+     is wired up and the onsubmit attribute is removed from <form>.
+============================================================ -->
+<script>
+
+  /* ── 1. Scroll reveal ── */
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target); // Animate once only
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+
+  /* ── 2. Work filter ── */
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const workCards  = document.querySelectorAll('.work-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      workCards.forEach(card => {
+        const match = filter === 'all' || card.dataset.cat === filter;
+        card.style.display = match ? 'block' : 'none';
+      });
+    });
+  });
+
+
+  /* ── 3. Nav scroll tint ── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.borderBottomColor = window.scrollY > 20
+      ? 'rgba(55,138,221,0.15)'
+      : 'var(--dark-border)';
+  });
+
+
+  /* ── 4. Contact form demo — DELETE once Formspree is live ── */
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = 'Message sent ✓';
+    btn.style.background = '#1D9E75';
+    setTimeout(() => {
+      btn.innerHTML = 'Send message <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2L2 8l5 2 2 5 5-13z"/></svg>';
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
+  }
+
+</script>
+
+
+</body>
+</html>
