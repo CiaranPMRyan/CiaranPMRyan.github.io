@@ -259,13 +259,13 @@ nav {
 }
 
 /* The short line before the eyebrow text */
-.hero-eyebrow::before {
+/* .hero-eyebrow::before {
   content: '';
   display: block;
   width: 32px;
   height: 1px;
   background: var(--accent-light);
-}
+} */
 
 /* Main name — large display font */
 .hero-name {
@@ -423,13 +423,13 @@ section {
 }
 
 /* Short line before the section label */
-.section-label::before {
+/* .section-label::before {
   content: '';
   display: block;
   width: 24px;
   height: 1px;
   background: var(--accent);
-}
+} */
 
 /* Large section heading — e.g. "Three disciplines." */
 .section-heading {
